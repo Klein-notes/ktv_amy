@@ -82,7 +82,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .ln rt { font-size: calc(var(--ruby) * 1em); font-weight: 500; opacity: .9; }
 .ln .tr { font-family: var(--trfont); font-size: calc(var(--lyric) * 0.55); color: var(--dim); line-height: 1.4; margin-top: 2px; }
 
-/* 最下面一條：左回歌單＋YouTube、中間六顆、右⚙ */
+/* 最下面一條：左回歌單、中間六顆、右⚙ */
 .stage { flex: 1; min-height: 0; position: relative; display: flex; }
 .lyrics.has-vox { padding: 0 120px; }
 .vox { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 92px; padding: 14px 0 16px;
@@ -110,9 +110,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 16px; font-weight: 700; }
 .sq svg { width: 26px; height: 26px; }
 .sq.on { border-color: var(--gold); color: var(--gold); }
-.ytbox { width: 112px; height: 63px; flex: none; border-radius: 8px; overflow: hidden; background: #000; }
-.ytbox[hidden] { display: none; }
-.ytbox iframe { width: 112px; height: 63px; display: block; }
 .buttons { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
 .big {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 68px;
@@ -126,8 +123,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 @media (max-width: 900px) {
   .dock { gap: 8px; padding: 10px 10px 12px; }
   .sq { width: 70px; font-size: 14px; }
-  .ytbox, .ytbox iframe { width: 96px; height: 54px; }
-  .buttons { gap: 6px; }
+    .buttons { gap: 6px; }
   .big { font-size: 14px; }
 }
 
@@ -140,15 +136,12 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   border-right: 1.5px solid var(--line); border-bottom: 1.5px solid var(--line); transform: rotate(45deg); }
 .prow { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 10px; }
 .prow > span { font-size: 17px; color: var(--dim); }
-.prow[hidden] { display: none; }
 .step { display: grid; grid-template-columns: 54px 1fr 54px; align-items: center; gap: 8px; }
 .step button, .seg button { height: 46px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card); font-size: 19px; font-weight: 700; }
 .step b { text-align: center; font-size: 18px; font-variant-numeric: tabular-nums; }
 .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .seg button.on { border-color: var(--gold); color: var(--gold); }
 .seg .mincho { font-family: var(--mincho); font-weight: 600; }
-.pinfo { font-size: 15px; color: var(--dim); border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; word-break: break-all; }
-.pinfo[hidden] { display: none; }
 
 /* 速度選單、唱完了 */
 .sheet { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: center; justify-content: center; z-index: 5; }
@@ -164,26 +157,9 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 28px; color: var(--dim); background: var(--bg); }
 @media (prefers-reduced-motion: reduce) { .ln { transition: none; } }
 .song { flex-wrap: wrap; }
-.song .btns { display: flex; gap: 10px; flex: none; }
-.song .yt {
-  flex: none; font-size: 20px; font-weight: 700; padding: 18px 16px; border-radius: 16px;
-  border: 1.5px dashed var(--line); background: transparent; color: var(--dim);
-}
-.song .yt.set { border-style: solid; border-color: var(--gold); color: var(--gold); }
 .song .go:disabled { opacity: .35; }
-.song .need { flex-basis: 100%; font-size: 18px; color: var(--dim); padding-left: 58px; }
-.field-label { font-size: 20px; color: var(--dim); }
-#urlInput {
-  font-size: 20px; padding: 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg);
-  color: var(--text); width: 100%; -webkit-user-select: text; user-select: text;
-}
-#urlInput:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
-.err { min-height: 26px; font-size: 18px; color: #F08A6C; }
-.row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 .opt.primary-opt { background: var(--gold); border-color: var(--gold); color: var(--on-gold); justify-content: center; }
-.row2 .opt, .row3 .opt { justify-content: center; font-size: 22px; }
-.hint { margin: 0; font-size: 19px; color: var(--dim); line-height: 1.5; }
-.shift { font-size: 34px; font-weight: 800; text-align: center; color: var(--gold); padding: 6px 0; font-variant-numeric: tabular-nums; }
+.row2 .opt { justify-content: center; font-size: 22px; }
 .msg { position: absolute; left: 50%; top: 40%; transform: translateX(-50%); max-width: 80%; background: var(--bar); border: 1.5px solid var(--line); border-radius: 18px; padding: 22px 26px; font-size: 24px; text-align: center; line-height: 1.5; }
 .msg[hidden] { display: none; }
 </style>
@@ -221,7 +197,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     <div class="prog"><i id="barFill"></i></div>
     <div class="time"><span id="tNow">0:00</span> / <span id="tAll">0:00</span></div>
     <button class="sq" id="backBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>回歌單</button>
-    <div class="ytbox" id="ytBox" hidden></div>
     <div class="buttons">
     <button class="big" id="bRestart" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2.5v14H6zM20 5v14L9.5 12z"/></svg>從頭唱</button>
     <button class="big" id="bPrev" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-2"/></svg>上一句</button>
@@ -236,8 +211,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
       <div class="prow"><span>假名</span><div class="step"><button class="sz" type="button" data-k="ruby" data-d="-1">A−</button><b id="rubyVal"></b><button class="sz" type="button" data-k="ruby" data-d="1">A+</button></div></div>
       <div class="prow"><span>字體</span><div class="seg"><button type="button" data-f="gothic">黑體</button><button type="button" data-f="mincho" class="mincho">明體</button></div></div>
       <div class="prow"><span>翻譯</span><div class="seg"><button type="button" data-t="1">顯示</button><button type="button" data-t="0">不顯示</button></div></div>
-      <div class="prow" id="syncRow" hidden><span>對時間</span><div class="seg"><button type="button" data-s="-0.1">歌詞提早</button><button type="button" data-s="0.1">歌詞延後</button></div></div>
-      <div class="pinfo" id="pinfo" hidden></div>
     </div>
   </div>
   <div class="loading" id="loading" hidden>歌曲載入中…</div>
@@ -246,20 +219,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
 <div class="sheet" id="speedSheet" role="dialog" aria-label="唱歌速度">
   <div class="panel" id="speedPanel"><h2>唱歌速度</h2></div>
-</div>
-
-<div class="sheet" id="urlSheet" role="dialog" aria-label="YouTube 網址">
-  <div class="panel">
-    <h2 id="urlTitle">YouTube 網址</h2>
-    <label class="field-label" for="urlInput">把 YouTube 影片的網址貼在這裡</label>
-    <input id="urlInput" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="https://www.youtube.com/watch?v=…">
-    <div class="err" id="urlErr"></div>
-    <div class="row3">
-      <button class="opt" id="urlRemove" type="button">清除</button>
-      <button class="opt" id="urlCancel" type="button">取消</button>
-      <button class="opt primary-opt" id="urlSave" type="button">儲存</button>
-    </div>
-  </div>
 </div>
 
 <div class="sheet" id="doneSheet" role="dialog" aria-label="唱完了">
@@ -341,32 +300,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   }
   const fmt = s => { if (!isFinite(s) || s < 0) s = 0; const t = Math.floor(s); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
 
-  // ── YouTube ──
-  function ytId(s) {
-    let u; try { u = new URL(String(s).trim()); } catch (e) { return null; }
-    if (!/youtu/.test(u.hostname)) return null;
-    const parts = u.pathname.split("/").filter(Boolean);
-    let id = null;
-    if (u.hostname.includes("youtu.be")) id = parts[0];
-    else if (u.searchParams.get("v")) id = u.searchParams.get("v");
-    else { const k = parts.findIndex(p => p === "embed" || p === "shorts" || p === "live"); if (k >= 0) id = parts[k + 1]; }
-    return id && /^[A-Za-z0-9_-]{6,}$/.test(id) ? id : null;
-  }
-  let ytApi = null;
-  function loadYTApi() {
-    if (ytApi) return ytApi;
-    ytApi = new Promise((res, rej) => {
-      if (window.YT && window.YT.Player) return res();
-      window.onYouTubeIframeAPIReady = () => res();
-      const sc = document.createElement("script");
-      sc.src = "https://www.youtube.com/iframe_api";
-      sc.onerror = () => { ytApi = null; rej(new Error("api")); };
-      document.head.appendChild(sc);
-    });
-    return ytApi;
-  }
-
-  // 兩種聲音來源：歌曲檔、YouTube。對外用法一樣
+  // 聲音來源：單一歌曲檔，或人聲＋伴奏兩個檔。對外用法一樣
   const fileSrc = {
     kind: "file",
     time: () => audio.currentTime,
@@ -376,43 +310,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     pause() { audio.pause(); },
     seek(t) { try { audio.currentTime = Math.max(0, t); } catch (e) {} },
     setRate(r) { audio.playbackRate = r; audio.defaultPlaybackRate = r; audio.preservesPitch = true; audio.webkitPreservesPitch = true; },
-    rates: () => [0.6, 0.7, 0.8, 0.9, 1.0],
     stop() { audio.pause(); audio.removeAttribute("src"); audio.load(); }
-  };
-  const ytSrc = {
-    kind: "yt", player: null, ready: false, state: -1, last: 0, lastAt: 0, rate: 1,
-    load(id) {
-      this.stop();
-      return loadYTApi().then(() => new Promise(res => {
-        $("ytBox").innerHTML = '<div id="ytPlayer"></div>';
-        this.player = new YT.Player("ytPlayer", {
-          width: 112, height: 63, videoId: id,
-          playerVars: { playsinline: 1, controls: 0, disablekb: 1, rel: 0, fs: 0, iv_load_policy: 3, modestbranding: 1 },
-          events: {
-            onReady: () => { this.ready = true; res(true); },
-            onStateChange: e => { this.state = e.data; this.mark(); if (e.data === 0) onEnded(); updateButtons(); },
-            onError: e => { res(false); showMsg(e.data === 101 || e.data === 150 ? "這支影片不允許在別的網頁播放，請換一支影片的網址。" : "這支影片播不了，請換一支影片的網址。"); }
-          }
-        });
-      }));
-    },
-    mark() { try { this.last = this.player.getCurrentTime(); this.lastAt = performance.now(); } catch (e) {} },
-    time() {
-      if (!this.player || !this.ready) return 0;
-      let t; try { t = this.player.getCurrentTime(); } catch (e) { return this.last; }
-      if (t !== this.last) { this.last = t; this.lastAt = performance.now(); return t; }
-      // YouTube 回報時間一秒只更新幾次，中間照速度補上，換句才不會一頓一頓
-      if (this.state === 1) return t + Math.min(0.5, (performance.now() - this.lastAt) / 1000) * this.rate;
-      return t;
-    },
-    duration() { try { return this.player.getDuration() || 0; } catch (e) { return 0; } },
-    paused() { return !(this.state === 1 || this.state === 3); },
-    play() { try { this.player.playVideo(); } catch (e) {} },
-    pause() { try { this.player.pauseVideo(); } catch (e) {} },
-    seek(t) { try { this.player.seekTo(Math.max(0, t), true); } catch (e) {} this.last = Math.max(0, t); this.lastAt = performance.now(); },
-    setRate(r) { this.rate = r; try { this.player.setPlaybackRate(r); } catch (e) {} },
-    rates() { try { return this.player.getAvailablePlaybackRates() || []; } catch (e) { return []; } },
-    stop() { if (this.player) { try { this.player.destroy(); } catch (e) {} } this.player = null; this.ready = false; this.state = -1; $("ytBox").innerHTML = ""; }
   };
   let src = fileSrc;
   // 人聲＋伴奏分開的兩個檔：一起播，人聲音量可以調（0＝只有伴奏）
@@ -448,7 +346,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     pause() { iAud.pause(); vAud.pause(); },
     seek(t) { t = Math.max(0, t); try { iAud.currentTime = t; vAud.currentTime = t; } catch (e) {} },
     setRate(r) { for (const a of [iAud, vAud]) { a.playbackRate = r; a.defaultPlaybackRate = r; a.preservesPitch = true; a.webkitPreservesPitch = true; } },
-    rates: () => [0.6, 0.7, 0.8, 0.9, 1.0],
     // 兩個檔偶爾會跑掉一點點，差超過 0.08 秒就把人聲拉回來
     sync() {
       const now = performance.now(); if (now - this.lastSync < 500) return; this.lastSync = now;
@@ -493,8 +390,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
   // ── 歌單 ──
   let songs = [];
-  const ytOf = s => { const local = store.get("yt." + s.dir, null); return local !== null ? local : (s.youtube || ""); };
-  const shiftOf = s => store.get("shift." + s.dir, s.shift || 0);
   async function loadList() {
     try { songs = (await (await fetch("songs/index.json", { cache: "no-cache" })).json()).songs || []; }
     catch (e) { songs = []; }
@@ -504,47 +399,22 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     const box = $("songs");
     if (!songs.length) { box.innerHTML = '<div class="empty">還沒有歌</div>'; return; }
     box.innerHTML = songs.map((s, i) => {
-      const yt = ytOf(s), playable = !!yt || !!s.audio || !!(s.vocal && s.inst);
+      const playable = !!s.audio || !!(s.vocal && s.inst);
       return `<div class="song">
         <div class="no">${i + 1}</div>
         <div class="info"><div class="t">${esc(s.title)}</div>${s.artist ? `<div class="a">${esc(s.artist)}</div>` : ""}</div>
-        <div class="btns">
-          <button class="yt${yt ? " set" : ""}" type="button" data-u="${i}">${yt ? "YouTube ✓" : "YouTube 網址"}</button>
-          <button class="go" type="button" data-i="${i}"${playable ? "" : " disabled"}>練唱</button>
-        </div>
-        ${playable ? "" : '<div class="need">先按「YouTube 網址」貼上這首歌的網址</div>'}
+        <button class="go" type="button" data-i="${i}"${playable ? "" : " disabled"}>練唱</button>
       </div>`;
     }).join("");
   }
   $("songs").addEventListener("click", e => {
-    const g = e.target.closest(".go"); if (g && !g.disabled) { openSong(+g.dataset.i); return; }
-    const u = e.target.closest(".yt"); if (u) openUrl(+u.dataset.u);
+    const g = e.target.closest(".go"); if (g && !g.disabled) openSong(+g.dataset.i);
   });
-
-  // YouTube 網址
-  let urlFor = null;
-  function openUrl(i) {
-    urlFor = i; const s = songs[i];
-    $("urlTitle").textContent = s.title;
-    $("urlInput").value = ytOf(s); $("urlErr").textContent = "";
-    $("urlSheet").classList.add("on");
-    setTimeout(() => $("urlInput").focus(), 50);
-  }
-  function closeUrl() { $("urlSheet").classList.remove("on"); $("urlInput").blur(); urlFor = null; }
-  $("urlSave").addEventListener("click", () => {
-    const s = songs[urlFor]; if (!s) return;
-    const v = $("urlInput").value.trim();
-    if (v && !ytId(v)) { $("urlErr").textContent = "這不像 YouTube 影片的網址，請再確認一次。"; return; }
-    store.set("yt." + s.dir, v ? v : undefined); closeUrl(); renderList();
-  });
-  $("urlRemove").addEventListener("click", () => { $("urlInput").value = ""; $("urlErr").textContent = ""; });
-  $("urlCancel").addEventListener("click", closeUrl);
-  $("urlSheet").addEventListener("click", e => { if (e.target === $("urlSheet")) closeUrl(); });
 
   // ── 唱歌 ──
   const cache = new Map();
   let meta = null, song = null, lines = [], rows = [], cur = null, loopLine = null, waiting = false, waitTimer = null,
-      guardUntil = 0, objectURL = null, stemURLs = [], wakeLock = null, loadToken = 0, shift = 0;
+      guardUntil = 0, objectURL = null, stemURLs = [], wakeLock = null, loadToken = 0;
 
   async function openSong(i) {
     meta = songs[i]; if (!meta) return;
@@ -553,23 +423,21 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     $("lyrics").innerHTML = ""; $("loading").textContent = "歌曲載入中…"; $("loading").hidden = false; hideMsg();
     resetState();
     const stems = !!(meta.vocal && meta.inst);
-    const yt = stems ? null : ytId(ytOf(meta));
-    src = stems ? stemSrc : yt ? ytSrc : fileSrc;
-    shift = yt ? shiftOf(meta) : 0;
-    $("syncRow").hidden = !yt; $("ytBox").hidden = !yt; closePop(); showInfo();
+    src = stems ? stemSrc : fileSrc;
+    closePop();
     $("vox").hidden = !stems; $("lyrics").classList.toggle("has-vox", stems); showVocal();
     // iPad 只允許「點一下」當下開始出聲：先在點擊時播一段無聲的音，之後換成歌曲才能自動播放
     if (stems) {
       ensureGraph();
       for (const a of [iAud, vAud]) { a.src = SILENT; const p = a.play(); if (p) p.catch(() => {}); }
-    } else if (!yt) { audio.src = SILENT; const p = audio.play(); if (p) p.catch(() => {}); }
+    } else { audio.src = SILENT; const p = audio.play(); if (p) p.catch(() => {}); }
     try {
       const c = cache.get(meta.dir);
       const sj = c && c.sj ? c.sj : await (await fetch(`songs/${meta.dir}/song.json`)).json();
       let blob = c && c.blob, vBlob = c && c.vBlob, iBlob = c && c.iBlob;
       if (stems && !(vBlob && iBlob)) {
         [vBlob, iBlob] = await Promise.all([meta.vocal, meta.inst].map(async f => (await fetch(`songs/${meta.dir}/${f}`)).blob()));
-      } else if (!stems && !yt && !blob) blob = await (await fetch(`songs/${meta.dir}/${meta.audio || sj.audio}`)).blob();
+      } else if (!stems && !blob) blob = await (await fetch(`songs/${meta.dir}/${meta.audio || sj.audio}`)).blob();
       cache.set(meta.dir, { sj, blob, vBlob, iBlob });
       if (token !== loadToken) return;
       song = sj; lines = sj.lines || [];
@@ -583,12 +451,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
         applyRate();
         $("loading").hidden = true;
         play();
-      } else if (yt) {
-        const ok = await ytSrc.load(yt);
-        if (token !== loadToken) return;
-        $("loading").hidden = true;
-        if (!ok) return;
-        applyRate(); play();     // iPad 可能不讓它自己開始，這時按「播放」就好
       } else {
         audio.pause();
         if (objectURL) URL.revokeObjectURL(objectURL);
@@ -600,7 +462,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
       }
       updateButtons();
     } catch (e) {
-      $("loading").textContent = yt ? "YouTube 連不上，請確認網路後回歌單再試一次。" : "歌曲讀不到，請回歌單再試一次。";
+      $("loading").textContent = "歌曲讀不到，請確認網路後回歌單再試一次。";
     }
   }
   function resetState() {
@@ -609,7 +471,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     $("doneSheet").classList.remove("on");
   }
   function closeSong() {
-    loadToken++; resetState(); closePop(); fileSrc.stop(); ytSrc.stop(); stemSrc.stop();
+    loadToken++; resetState(); closePop(); fileSrc.stop(); stemSrc.stop();
     song = null; lines = []; rows = []; releaseWake(); show("listView");
   }
   function show(id) { for (const v of document.querySelectorAll(".view")) v.classList.toggle("on", v.id === id); }
@@ -644,15 +506,14 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     const i = +r.dataset.i; if (T(i) !== null) jump(i);
   });
 
-  // 每句的時間（YouTube 版可以整首提早或延後）
-  const T = i => (lines[i] && lines[i].time != null ? lines[i].time + shift : null);
+  const T = i => (lines[i] && lines[i].time != null ? lines[i].time : null);
   const timed = () => lines.some(l => l.time != null);
   function currentIndex(t) {
     const now = t + 0.05; let best = null, bt = -Infinity;
     for (let i = 0; i < lines.length; i++) { const x = T(i); if (x !== null && x <= now && x >= bt) { best = i; bt = x; } }
     return best;
   }
-  function totalDur() { return src.duration() || (song ? song.duration + Math.max(0, shift) : 0); }
+  function totalDur() { return src.duration() || (song ? song.duration : 0); }
   function range(i) {
     const s = T(i); if (s === null) return null;
     let end = totalDur() || s + 5;
@@ -677,11 +538,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   }
 
   // 播放控制
-  function speedChoices() {
-    if (src.kind !== "yt") return [0.6, 0.7, 0.8, 0.9, 1.0];
-    const av = src.rates().filter(r => r >= 0.5 && r <= 1);
-    return av.length ? av : [1.0];
-  }
+  const speedChoices = () => [0.6, 0.7, 0.8, 0.9, 1.0];
   function nearestRate(r) { const c = speedChoices(); return c.reduce((a, b) => (Math.abs(b - r) < Math.abs(a - r) ? b : a), c[c.length - 1]); }
   function applyRate() { src.setRate(nearestRate(S.rate)); }
   const isPlaying = () => !src.paused() || waiting;
@@ -775,7 +632,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     $("speedLabel").textContent = r > 0.99 ? "速度 原速" : "速度 " + r + "倍";
     document.querySelectorAll("[data-t]").forEach(b => b.classList.toggle("on", (b.dataset.t === "1") === S.tr));
     document.querySelectorAll("[data-f]").forEach(b => b.classList.toggle("on", b.dataset.f === S.font));
-    if (song && src === ytSrc) $("tAll").textContent = fmt(totalDur());
   }
 
   // 螢幕不要自己變暗（iPad 有支援才會生效）
@@ -807,31 +663,17 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
     document.querySelectorAll(".ln .tr").forEach(e => { e.hidden = !S.tr; });
     updateButtons(); requestAnimationFrame(scrollToCur);
   }));
-  // 對時間：YouTube 版本跟原本的歌可能前後差幾秒
-  document.querySelectorAll("[data-s]").forEach(b => b.addEventListener("click", () => {
-    shift = Math.round((shift + +b.dataset.s) * 10) / 10;
-    store.set("shift." + meta.dir, shift); showInfo(); tick(true);
-  }));
-  // 顯示這首目前的秒數和網址；要讓每台都一樣，把這段告訴 Claude 寫進歌單檔
-  function showInfo() {
-    if (!meta || src !== ytSrc) { $("pinfo").hidden = true; return; }
-    const v = Math.round(shift * 10) / 10;
-    const t = v === 0 ? "剛好" : (v < 0 ? "歌詞提早 " + (-v).toFixed(1) + " 秒" : "歌詞延後 " + v.toFixed(1) + " 秒");
-    $("pinfo").textContent = "對時間：" + t + "　YouTube：" + ytOf(meta);
-    $("pinfo").hidden = false;
-  }
   const pop = $("pop"), gear = $("gearBtn");
   function closePop() { pop.classList.remove("on"); gear.classList.remove("on"); gear.setAttribute("aria-expanded", "false"); }
   gear.addEventListener("click", e => {
     e.stopPropagation();
     const on = !pop.classList.contains("on");
     pop.classList.toggle("on", on); gear.classList.toggle("on", on); gear.setAttribute("aria-expanded", String(on));
-    if (on) showInfo();
   });
   pop.addEventListener("click", e => e.stopPropagation());
   document.addEventListener("click", e => { if (pop.classList.contains("on") && !pop.contains(e.target)) closePop(); });
   // 速度
-  const NAMES = { 0.5: "很慢", 0.6: "很慢", 0.7: "慢", 0.75: "慢", 0.8: "稍慢", 0.9: "有點慢", 1: "原速" };
+  const NAMES = { 0.6: "很慢", 0.7: "慢", 0.8: "稍慢", 0.9: "有點慢", 1: "原速" };
   function buildSpeeds() {
     const now = nearestRate(S.rate);
     $("speedPanel").innerHTML = "<h2>唱歌速度</h2>" + speedChoices().map(v =>
@@ -853,7 +695,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
   $("dAgain").addEventListener("click", restart);
   $("dBack").addEventListener("click", closeSong);
   document.addEventListener("keydown", e => {
-    if (e.code === "Space" && song && document.activeElement !== $("urlInput")) { e.preventDefault(); togglePlay(); }
+    if (e.code === "Space" && song) { e.preventDefault(); togglePlay(); }
     if (e.key === "Escape") closePop();
   });
 
